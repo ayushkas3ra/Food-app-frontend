@@ -1,0 +1,254 @@
+.feed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background-color: #000;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep functionality */
+.feed-container::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.feed-video-card {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+/* Video displays in original size on wider screens */
+.feed-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* On mobile, still cover the screen */
+@media (max-width: 768px) {
+  .feed-video {
+    object-fit: cover;
+  }
+}
+
+.feed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-content-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  padding-top: 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.feed-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.feed-description {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.feed-visit-btn {
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+.feed-visit-btn:hover {
+  background-color: #ff8c5a;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+}
+
+.feed-visit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Right Side Action Buttons */
+.feed-actions {
+  position: absolute;
+  right: 15px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.feed-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.feed-action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.feed-action-btn:hover {
+  background: rgba(255, 107, 53, 0.8);
+  transform: scale(1.1);
+}
+
+.feed-action-btn.liked {
+  animation: likeAnimation 0.3s ease;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.feed-action-btn.order-now-btn {
+  background: #ff6b35;
+}
+
+.feed-action-btn.order-now-btn:hover {
+  background: #ff8c5a;
+}
+
+.feed-action-count {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.feed-empty {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  background-color: #000;
+}
+
+/* Video play/pause indicator */
+.feed-video-card.active .feed-video {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feed-content-top {
+    padding: 16px;
+    padding-top: 50px;
+    gap: 10px;
+  }
+
+  .feed-title {
+    font-size: 1.25rem;
+  }
+
+  .feed-description {
+    font-size: 0.9rem;
+  }
+
+  .feed-visit-btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-content-top {
+    padding: 12px;
+    padding-top: 40px;
+    gap: 8px;
+  }
+
+  .feed-title {
+    font-size: 1.1rem;
+  }
+
+  .feed-description {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .feed-visit-btn {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
