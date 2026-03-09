@@ -24,6 +24,7 @@ function AppRoutes() {
                 <Route path="/food-partner/dashboard" element={<FoodPartnerDashboard />} />
                 <Route path="/food-partner/:id" element={<FoodPartnerProfile />} />
                 <Route path="*" element={<Navigate to="/user/register" replace />} />
+                <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
         </Router>
     )
