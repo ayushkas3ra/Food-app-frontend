@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import React from 'react'
 import UserRegister from "../pages/UserRegister"
 import UserLogin from "../pages/UserLogin"
@@ -23,6 +23,7 @@ function AppRoutes() {
                 <Route path="/feed" element={<Feed />} />
                 <Route path="/food-partner/dashboard" element={<FoodPartnerDashboard />} />
                 <Route path="/food-partner/:id" element={<FoodPartnerProfile />} />
+                <Route path="*" element={<Navigate to="/user/register" replace />} />
             </Routes>
         </Router>
     )
