@@ -70,7 +70,7 @@ function UserLogin() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="email">
-              Email Address
+              Email Address(You can use : test@test.com)
             </label>
 
             <input
@@ -85,7 +85,7 @@ function UserLogin() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="password">
-              Password
+              Password(You can use 1234)
             </label>
 
             <div className="password-wrapper">
