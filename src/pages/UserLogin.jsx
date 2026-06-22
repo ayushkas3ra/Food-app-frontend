@@ -85,7 +85,7 @@ function UserLogin() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="password">
-              Password(You can use 1234)
+              Password(You can use : 1234)
             </label>
 
             <div className="password-wrapper">
